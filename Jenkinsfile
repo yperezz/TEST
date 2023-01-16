@@ -15,18 +15,30 @@ pipeline {
 						//PROJECT_JSON = files[0].path
 						//println("$PROJECT_JSON")
 						
-						dir("$WORKSPACE") {
-							def files = findFiles() 
+						    // Get all files from a directory.
+							File directory = new File("$WORKSPACE");
+							File[] fList = directory.listFiles();
+							if(fList != null)
+								for (File file : fList) {      
+									if (file.isFile()) {
+										files.add(file);
+									} else if (file.isDirectory()) {
+										listf(file.getAbsolutePath(), files);
+									}
+								}
+								
 							
-							files.each{ f -> 
+							fList.each{ f -> 
 								if(f.directory) {
 									echo "This is directory: ${f.name} "
 								}
 							}
-						}
  
  
 					}
+			    
+			    
+			    
 	            }
 	        }
 
