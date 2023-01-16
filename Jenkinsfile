@@ -12,7 +12,8 @@ pipeline {
 	                echo "Building..with ${WORKSPACE}"
 					script{
 						def files = findFiles(glob: '**project.json**')
-						PROJECT_JSON = ${files[0].path}	
+						PROJECT_JSON = files[0].path
+						println("$PROJECT_JSON")
 					}
 	            }
 	        }
