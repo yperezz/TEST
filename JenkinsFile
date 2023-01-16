@@ -10,7 +10,7 @@ pipeline {
 	        stage('Find File') {
 	            steps {
 	                echo "Building..with ${WORKSPACE}"
-					def files = findFiles(glob: '**/TEST-*.xml')
+					def files = findFiles(glob: '**project.json**')
 					PROJECT_JSON = ${files[0].path}	
 	            }
 	        }
