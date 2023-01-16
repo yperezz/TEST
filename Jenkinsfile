@@ -27,7 +27,8 @@ pipeline {
 							foldersList = output.tokenize('\n').collect() { it }
 						} else {
 							def output = bat returnStdout: true, script: "dir '*project.json'"
-							foldersList = output.tokenize('\n').collect() { it }
+							println(output)
+							foldersList = output
 							foldersList = foldersList.drop(2)
 									
 						}
