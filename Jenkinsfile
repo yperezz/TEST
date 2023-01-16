@@ -26,7 +26,7 @@ pipeline {
 							def output = sh returnStdout: true, script: "ls -l ${WORKSPACE} | grep ^d | awk '{print \$9}'"
 							foldersList = output.tokenize('\n').collect() { it }
 						} else {
-							def output = bat returnStdout: true, script: "dir '*project.json'"
+							def output = bat returnStdout: true, script: "dir '*project.json' /s"
 							println(output)
 							foldersList = output
 							foldersList = foldersList.drop(2)
